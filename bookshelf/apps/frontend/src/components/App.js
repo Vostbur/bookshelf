@@ -37,7 +37,7 @@ class App extends Component {
         {this.state.data.map(book => {
           return (
             <li key={book.id}>
-              {book.title} ({book.author})
+              <a href={"api/book/" + book.id}>{book.title} ({book.author})</a>
             </li>
           );
         })}

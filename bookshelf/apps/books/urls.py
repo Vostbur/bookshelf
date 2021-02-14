@@ -4,6 +4,7 @@ from . import views
 
 
 urlpatterns = [
-    path('api/book/', views.BookListCreate.as_view()),
+    path('api/book/', views.BookListView.as_view()),
+    path('api/book/<int:pk>', views.BookDetailView.as_view()),
     path('book', views.index, name='index'),
 ]
