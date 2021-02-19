@@ -11,7 +11,7 @@ class ReaderAdmin(admin.ModelAdmin):
 
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'author', 'get_readers_str')
+    list_display = ('id', 'title', 'author', 'created_at', 'get_readers_str')
 
     def get_readers_str(self, obj):
         return ', '.join(obj.readers.all().values_list('name', flat=True))
