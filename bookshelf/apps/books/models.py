@@ -28,3 +28,23 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# class RankBooks(models.Model):
+#     reader = models.ForeignKey(Reader, on_delete=models.CASCADE)
+#     rank = models.ForeignKey('Rank', on_delete=models.CASCADE)
+#     quantity = models.PositiveSmallIntegerField(default=1)
+#
+#     def __str__(self):
+#         return f'{self.quantity} раз {self.reader_id} поставил {self.rank_id}'
+#
+#
+# class Rank(models.Model):
+#     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+#     readers = models.ManyToManyField(
+#         Reader,
+#         through=RankBooks
+#     )
+#
+#     def __str__(self):
+#         return f'{self.id} {self.book_id}'
