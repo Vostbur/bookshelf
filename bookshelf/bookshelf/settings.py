@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.books.apps.BooksConfig',
     'debug_toolbar',
+    'djoser',
     'rest_framework',
     'apps.frontend',
+    'apps.users.apps.UsersConfig',
+    'apps.books.apps.BooksConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,17 @@ STATIC_URL = '/static/'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
+
+DJOSER = {
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': False,
+}
+
+AUTH_USER_MODEL = 'users.User'
