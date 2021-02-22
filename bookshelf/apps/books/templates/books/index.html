@@ -1,9 +1,0 @@
-{% if best_book_list %}
-    <ul>
-    {% for book in best_book_list %}
-        <li><a href="/books/{{ book.id }}/">{{ book.title }} ({{ book.author }})</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No books are available.</p>
-{% endif %}
