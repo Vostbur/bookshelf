@@ -3,6 +3,8 @@ from django.utils import timezone
 
 from apps.users.models import User
 
+from django_resized import ResizedImageField
+
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
@@ -11,6 +13,7 @@ class Book(models.Model):
         verbose_name='created at',
         default=timezone.now
     )
+    cover = ResizedImageField(size=[165, 247], upload_to='covers', default='default.jpg')
     users = models.ManyToManyField(User)
 
     class Meta:
