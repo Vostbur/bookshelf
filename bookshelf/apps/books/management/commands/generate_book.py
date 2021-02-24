@@ -2,7 +2,10 @@ import random
 
 from django.core.management.base import BaseCommand
 
-from apps.books.models import Book
+from apps.books.models import (
+    Author,
+    Book
+)
 from apps.users.models import User
 
 from faker import Faker
@@ -15,11 +18,17 @@ class Command(BaseCommand):
 
         users = list(User.objects.values_list('id', flat=True))
         for i in range(amount):
+
+            author = Author.objects.create(
+                name=fake.name()
+            )
+
             book = Book.objects.create(
                 title=fake.text(max_nb_chars=50),
-                author=fake.name(),
+                author=author,
                 created_at=fake.date_time()
             )
+
             book.users.add(
                 *random.sample(
                     users, random.randint(1, len(users))
